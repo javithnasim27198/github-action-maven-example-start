@@ -18,11 +18,5 @@ jobs:
       run: |
           mvn -B package --file pom.xml
           mvn help:evaluate -Dexpression=project.version -q -DforceStdout
-#          project_version= $(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
-#          echo $project_version
-
-    - name: Get Version
-        uses: ./
-        id: getVersion
-    - name: Print the version
-        run: echo "The version we just got is ${{ steps.getVersion.outputs.version }}" 
+          VERSION=$(grep -m1 -oP '<version>\K[^<]+' pom.xml)
+          echo "$VERSION"
