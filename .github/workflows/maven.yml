@@ -15,4 +15,7 @@ jobs:
         java-version: 14
 
     - name: Build project with Maven
-      run: mvn -B package --file pom.xml
+      run: |
+          mvn -B package --file pom.xml
+          mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate \
+          -Dexpression=project.version
