@@ -17,6 +17,5 @@ jobs:
     - name: Build project with Maven
       run: |
           mvn -B package --file pom.xml
-          mvn help:evaluate -Dexpression=project.version -q -DforceStdout
           VERSION=$(grep -m1 -oP '<version>\K[^<]+' pom.xml)
           echo "$VERSION"
