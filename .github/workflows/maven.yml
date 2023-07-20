@@ -19,3 +19,7 @@ jobs:
           mvn -B package --file pom.xml
           VERSION=$(grep -m1 -oP '<version>\K[^<]+' pom.xml)
           echo "$VERSION"
+          echo "POM_VERSION=$VERSION" >> $GITHUB_ENV
+          
+    - name: Get POM VERSION from env file
+      run: echo $POM_VERSION
