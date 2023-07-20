@@ -19,3 +19,6 @@ jobs:
           mvn -B package --file pom.xml
           mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate \
           -Dexpression=project.version
+          project_version= $(mvn org.apache.maven.plugins:maven-help-plugin:2.1.1:evaluate \
+          -Dexpression=project.version)
+          echo $project_version
